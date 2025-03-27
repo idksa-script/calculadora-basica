@@ -16,6 +16,11 @@ ventana.geometry("500x600")
 
 validacion = ventana.register(validar_entrada)
 
+#tamaño de los botones
+ancho = 8
+largo = 3
+######################
+
 #primer frame, caja o div donde se encuentran dos frame uno para la entrada y resultado de las operaciones y otro de botones 
 frame_padre = tk.Frame(ventana, bg="black")
 frame_padre.pack(fill="both", expand=True)
@@ -26,11 +31,21 @@ frame_hijo1.place(relx=0, rely=0, relwidth=1.0, relheight=0.35)
 cuadro_texto = tk.Entry(frame_hijo1, font=("Arial", 14), justify="right", validate="key", validatecommand=(validacion, "%P"), bg="black", fg="white", bd=0, highlightthickness=0)
 cuadro_texto.pack(fill="both", expand=True)
 
+############
+#los botones se guardaran en una lista para hacerlas dentro de un for 
+botones = [
+    ("7", 0, 0), ("8", 0, 1), ("9", 0, 2), ("/", 0, 3),
+    ("4", 1, 0), ("5", 1, 1), ("6", 1, 2), ("*", 1, 3),
+    ("1", 2, 0), ("2", 2, 1), ("3", 2, 2), ("-", 2, 3),
+    ("C", 3, 0), ("0", 3, 1), ("=", 3, 2), ("+", 3, 3)
+]
+
 #frame hijo2 donde estan los botones para ingresar el texto o mejor dicho las operaciones 
 frame_hijo2 = tk.Frame(frame_padre, bg="black")
 frame_hijo2.place(relx=0, rely=0.35, relwidth=1.0, relheight=0.65)
-boton1 = tk.Button(frame_hijo2, text="hola mundo", width=5, height=3)
-boton1.pack(pady=20)
+for texto, filas, columnas in botones:
+    boton = tk.Button(frame_hijo2, text=texto)
+    boton.grid(row=filas, column=columnas)
 
 
 ventana.mainloop()
