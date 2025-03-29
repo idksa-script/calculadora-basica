@@ -1,5 +1,5 @@
 import tkinter as tk 
-
+from logicaCalculadora import borrar
 #verifica la entrada del teclado asegurandose de que no sea letras solo numero y ciertos simnolos
 def validar_entrada(entrada):
     carateres = "1234567890.+-*/%"
@@ -49,8 +49,12 @@ for i in range(4):
     frame_hijo2.columnconfigure(i, weight=1)
 
 for texto, filas, columnas in botones:
-    boton = tk.Button(frame_hijo2, text=texto)
-    boton.grid(row=filas, column=columnas, sticky="nsew")
+    if texto == "C":
+        boton = tk.Button(frame_hijo2, text=texto, command=lambda: borrar(cuadro_texto))
+        boton.grid(row=filas, column=columnas, sticky="nsew")
+    else:
+        boton = tk.Button(frame_hijo2, text=texto)
+        boton.grid(row=filas, column=columnas, sticky="nsew")
 
 
 ventana.mainloop()
