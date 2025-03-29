@@ -43,9 +43,14 @@ botones = [
 #frame hijo2 donde estan los botones para ingresar el texto o mejor dicho las operaciones 
 frame_hijo2 = tk.Frame(frame_padre, bg="black")
 frame_hijo2.place(relx=0, rely=0.35, relwidth=1.0, relheight=0.65)
+
+for i in range(4):
+    frame_hijo2.rowconfigure(i, weight=1)
+    frame_hijo2.columnconfigure(i, weight=1)
+
 for texto, filas, columnas in botones:
     boton = tk.Button(frame_hijo2, text=texto)
-    boton.grid(row=filas, column=columnas)
+    boton.grid(row=filas, column=columnas, sticky="nsew")
 
 
 ventana.mainloop()
