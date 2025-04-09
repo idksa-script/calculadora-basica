@@ -50,13 +50,15 @@ for i in range(4):
 
 for texto, filas, columnas in botones:
     if texto == "C":
-        boton = tk.Button(frame_hijo2, text=texto, command=lambda: borrar(cuadro_texto))
+        boton = tk.Button(frame_hijo2, text=texto, command=lambda: borrar(cuadro_texto), bg="#da964e", fg="white")
 
     elif texto == "=":
-        boton = tk.Button(frame_hijo2, text=texto, command=lambda: calcular(cuadro_texto))
+        boton = tk.Button(frame_hijo2, text=texto, command=lambda: calcular(cuadro_texto), bg="#da964e", fg="white")
+    elif texto in "-+*/":
+        boton = tk.Button(frame_hijo2, text=texto, bg="#da964e", fg="white", command= lambda t= texto: agregar(cuadro_texto, t))
 
     else:
-        boton = tk.Button(frame_hijo2, text=texto, command= lambda t= texto: agregar(cuadro_texto, t))
+        boton = tk.Button(frame_hijo2, text=texto, command= lambda t= texto: agregar(cuadro_texto, t), bg="#242423", fg="white")
     boton.grid(row=filas, column=columnas, sticky="nsew")
 
 
